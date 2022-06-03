@@ -11,7 +11,7 @@ use word_counter::WordCounter;
 fn main() {
     let args: Vec<String> = env::args().collect();
     let filename = &args[1];
-    let min_count = &args[2];
+    let min_word_length = &args[2];
 
     println!("Processing file: {}", filename);
 
@@ -31,9 +31,9 @@ fn main() {
         }
     }
 
-    let min = u64::from_str_radix(min_count as &str, 10);
+    let min = u64::from_str_radix(min_word_length as &str, 10);
     match min {
         Result::Ok(x) => counter.display(&x),
-        _ => println!("Couldn't filter by min count!"),
+        _ => println!("Could not filter by minimum word length"),
     }
 }
