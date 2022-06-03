@@ -21,9 +21,9 @@ fn main() {
 
     for line in reader.lines() {
         let line = line.expect("Could not read line");
-        let words = line.split(" ");
+        let words = line.split(' ');
         for word in words {
-            if word == "" {
+            if word.is_empty() {
                 continue;
             } else {
                 counter.increment(word);
@@ -31,7 +31,7 @@ fn main() {
         }
     }
 
-    let min = u64::from_str_radix(min_word_length as &str, 10);
+    let min = (min_word_length as &str).parse::<u64>();
     match min {
         Result::Ok(x) => counter.display(&x),
         _ => println!("Could not filter by minimum word length"),
